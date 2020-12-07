@@ -1,18 +1,52 @@
+" ENVIRONMENTAL
+source $HOME/.config/nvim/sessions/default.vim
+
+let g:LASTLAUNCHTIME = system('echo $VIMLASTLAUNCHTIME')
+if (system('date +%s') - LASTLAUNCHTIME) < 2
+	source $MYVIMRC
+endif
+system("VIMLASTLAUNCHTIME=$(date +%s"))
+" /Environmental
+" UTIL FUNCTIONS
+"/Util Functions
 " SET
 set nowrap
 set smartindent
 " /SET
 " MAP
 let mapleader = " "
+" Normal Mode Map
+	"SESSION
+	nnoremap <leader>qr :mksession! $HOME/.config/nvim/sessions/default.vim<CR> :source $MYVIMRC<CR>
+	nnoremap <leader>qq :mksession! $HOME/.config/nvim/sessions/default.vim<CR> :wqa!<CR>
+	nnoremap <leader>qQ :qa!<CR>
+
+	"FILEs
+	nnoremap <leader>fs :w<CR>
+
+	"NAV remap
+	noremap <C-h> 0
+	noremap <C-l> $
+
+	"WINDOWS
+
+" /Normal Mode Map
+
+" Insert Mode Map
+inoremap jk <esc>
+inoremap kj <esc>
+" //Insert Mode Map
 " /MAP
 
-" Plugins will be downloaded under the specified directory.
+"PLUGINS
 call plug#begin('~/.vim/plugged')
 
-" Declare the list of plugins.
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+Plug 'https://github.com/tpope/vim-surround'
+"Plug 'https://github.com/kana/vim-arpeggio'
+"/PLUGINS
 
 "JS IDE
 Plug 'pangloss/vim-javascript'
@@ -47,3 +81,4 @@ colorscheme gruvbox
 " Change highlighting of cursor line when entering/leaving Insert Mode
 set cursorline
 " /THEMES
+

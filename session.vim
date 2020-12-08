@@ -8,7 +8,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 .gitignore
-badd +74 init.vim
+badd +104 init.vim
 badd +4 ~/Projects/megamacros/README.md
 badd +21 ~/Projects/megamacros/LICENSE
 badd +469 /usr/share/nvim/runtime/doc/fold.txt
@@ -32,8 +32,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 17 + 18) / 37)
-exe '2resize ' . ((&lines * 17 + 18) / 37)
+exe '1resize ' . ((&lines * 16 + 17) / 35)
+exe '2resize ' . ((&lines * 16 + 17) / 35)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -84,12 +84,12 @@ normal! zo
 normal! zo
 117
 normal! zc
-let s:l = 73 - ((15 * winheight(0) + 8) / 17)
+let s:l = 129 - ((55 * winheight(0) + 8) / 16)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-73
-normal! 05|
+129
+normal! 06|
 wincmd w
 argglobal
 if bufexists("README.md") | buffer README.md | else | edit README.md | endif
@@ -102,15 +102,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((2 * winheight(0) + 8) / 17)
+let s:l = 7 - ((6 * winheight(0) + 8) / 16)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
-normal! 0
+7
+normal! 075|
 wincmd w
-exe '1resize ' . ((&lines * 17 + 18) / 37)
-exe '2resize ' . ((&lines * 17 + 18) / 37)
+exe '1resize ' . ((&lines * 16 + 17) / 35)
+exe '2resize ' . ((&lines * 16 + 17) / 35)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

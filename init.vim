@@ -12,6 +12,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'https://github.com/mswift42/vim-themes'
 call plug#end()
 "/PLUGINS
+"UTIL FUNCTIONS
+"/Util Functions
 "THEMES
   colorscheme gruvbox
   set cursorline
@@ -48,9 +50,11 @@ call plug#end()
     autocmd BufWinEnter * silent! loadview
   augroup END
 "/Environmental
+"TODO: detect args on nvim call and do not load session
+"TODO: disable buffers setup undo folder 
+"TODO: plugin undo tree
+"TODO: how to work with clipboard, sync with system clipboard
 call g:LoadSession()
-"UTIL FUNCTIONS
-"/Util Functions
 "SET
   set nu
   set nowrap
@@ -76,6 +80,7 @@ call g:LoadSession()
     "Nav
       noremap <C-h> 0
       noremap <C-l> $
+      noremap ff %
       noremap <leader> :
       call arpeggio#map('n', '', 0, 'jk', '<Esc>')
       call arpeggio#map('n', '', 0, 'hl', '<Enter>')
@@ -111,15 +116,20 @@ call g:LoadSession()
   "/Imap
   "CMAP
     "NAV
-      call arpeggio#map('c', '', 0, 'jk', '<Esc>')
-      cmap jk <Esc>
-      cmap kj <Esc>
+      call arpeggio#map('c', '', 0, 'jk', '<C-c>')
+      call arpeggio#map('c', '', 0, 'hl', '<CR>')
 
       cmap <C-j> <down>
       cmap <C-k> <up>
       cmap <C-h> <left>
       cmap <C-l> <right>
   "/Cmap
+  "VMAP
+    "Nav
+    "Move (not the same as NAV)
+    vnoremap J :m '>+1<CR>gv=gv
+    vnoremap K :m '<-2<CR>gv=gv
+  "/Vmap
 "/Map
 "JS IDE
   let g:javascript_plugin_jsdoc = 1

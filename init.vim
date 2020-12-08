@@ -1,6 +1,6 @@
 
 "PLUGINS
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
@@ -87,6 +87,7 @@ call plug#end()
       noremap <C-l> $
       noremap <leader>wc :close<CR>
       call arpeggio#map('n', '', 0, 'jk', '<Esc>')
+      call arpeggio#map('n', '', 0, 'hl', '<Enter>')
 
 
     "Tabs

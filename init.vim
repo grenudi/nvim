@@ -4,14 +4,21 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
-Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/kana/vim-arpeggio'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'pangloss/vim-javascript'
-
+"themes
+Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+Plug 'https://github.com/mswift42/vim-themes'
 call plug#end()
 "/PLUGINS
+
+
+"THEMES
+  colorscheme gruvbox
+  set cursorline
+"/Themes
 
 " ENVIRONMENTAL
   let g:defaultSession="$HOME/.config/nvim/sessions/default.vim"
@@ -24,7 +31,6 @@ call plug#end()
       execute ":mksession!" . g:defaultSession
     endif
   endfunction
-
   function! g:LoadSession()
     if filereadable("session.vim")
       execute "source " . "session.vim"
@@ -32,7 +38,6 @@ call plug#end()
       execute "source " . g:defaultSession
     endif
   endfunction
-  
   "Should restore cursor pos , in theory
   function! ResCur()
     if line("'\"") <= line("$")
@@ -40,7 +45,6 @@ call plug#end()
       return 1
     endif
   endfunction
-
   augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
@@ -81,9 +85,11 @@ call plug#end()
     "NAV remap
       noremap <C-h> 0
       noremap <C-l> $
+      noremap <leader>wc :close<CR>
       call arpeggio#map('n', '', 0, 'jk', '<Esc>')
 
-    "WINDOWS
+
+    "Tabs
       map <C-t><up> :tabr<cr>
       map <C-t><down> :tabl<cr>
       map <C-t><left> :tabp<cr>
@@ -94,7 +100,13 @@ call plug#end()
       nnoremap <leader>tr :setl <c-r>=&rnu ? "nornu" : "rnu"<cr><cr>
       nnoremap <leader>tf :NERDTreeToggle<CR>
 
-    "BUFFER (Pseudo) just tabs
+    "Plugin manager
+      nnoremap <leader>pi :PlugInstall<CR>
+      nnoremap <leader>pu :PlugUpdate<CR>
+      nnoremap <leader>pg :PlugUpgrade<CR>
+      nnoremap <leader>pc :PlugClean<CR>
+      nnoremap <leader>ps :PlugStatus<CR>
+      
   "/Nmap
 
   "IMAP
@@ -147,9 +159,4 @@ map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<
 
 
 
-"THEMES
-colorscheme gruvbox
-
-set cursorline
-"/THEMES
 

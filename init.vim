@@ -8,8 +8,15 @@ call plug#begin('~/.config/nvim/plugged')
   "JS IDE
   Plug 'https://github.com/pangloss/vim-javascript'
   "themes
-  Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-  Plug 'https://github.com/mswift42/vim-themes'
+  Plug 'https://github.com/lifepillar/vim-gruvbox8'
+  Plug 'https://github.com/lifepillar/vim-solarized8'
+  Plug 'https://github.com/lifepillar/vim-wwdc16-theme'
+  Plug 'https://github.com/lifepillar/vim-wwdc17-theme'
+  "change theme on f8 F8 and alt f8
+  Plug 'https://github.com/felixhummel/setcolors.vim'
+  Plug 'https://github.com/vim-airline/vim-airline'
+  Plug 'https://github.com/vim-airline/vim-airline-themes'
+  Plug 'https://github.com/airblade/vim-gitgutter'
 call plug#end()
 "/PLUGINS
 "UTIL FUNCTIONS
@@ -29,7 +36,8 @@ call plug#end()
   endfunction
 "/Util Functions
 "THEMES
-  colorscheme gruvbox
+  silent! execute ":SetColors slate murphy gruvbox8 gruvbox8_hard gruvbox8_soft seoul256 solarized8_flat solarized8_low industry pablo"
+  colorscheme gruvbox8_hard
   set cursorline
 "/Themes
 "ENVIRONMENTAL
@@ -57,15 +65,30 @@ call plug#end()
 "TODO: plugin undo tree
 "TODO: how to work with clipboard, sync with system clipboard
 "SET
+  "AirLine
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline_powerline_fonts = 1
+  "let g:airline_theme='<theme>'
+
+  syntax on
+  filetype plugin on
+  set omnifunc=syntaxcomplete#Complete
+  set completeopt=longest,menuone
+
   set nu
   set rnu
-  set nowrap
-  set smartindent
-
-  set tabstop=2 softtabstop=2
-  set shiftwidth=2
-  set expandtab
-  set smartindent
+  "Indentation
+    set nowrap
+    set smartindent
+    set smartcase
+    set incsearch
+    set tabstop=2 softtabstop=2
+    set shiftwidth=2
+    set expandtab
+  set noswapfile
+  set nobackup
+  set undodir=~/.config/nvim/undodir
+  set undofile
 "/SET
 "MAP
   let mapleader = " "
@@ -103,6 +126,10 @@ call plug#end()
       nnoremap <leader>pg :PlugUpgrade<CR>
       nnoremap <leader>pc :PlugClean<CR>
       nnoremap <leader>ps :PlugStatus<CR>
+      "Theme UI
+      nmap <leader>Tn <F8>
+      "Git - g
+      noremap <leader>gt :GitGutterSignsToggle<CR>
   "/Nmap
   "IMAP
     call arpeggio#map('i', '', 0, 'jk', '<Esc>')
@@ -152,3 +179,4 @@ call plug#end()
   let g:javascript_conceal_underscore_arrow_function = "🞅"
 map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 "/JS IDE
+"

@@ -8,18 +8,19 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +2 .gitignore
-badd +43 init.vim
+badd +71 init.vim
 badd +4 ~/Projects/megamacros/README.md
 badd +21 ~/Projects/megamacros/LICENSE
 badd +465 /usr/share/nvim/runtime/doc/fold.txt
 badd +23 ~/index.html
-badd +7 README.md
+badd +8 README.md
 badd +491 /usr/share/nvim/runtime/doc/autocmd.txt
 badd +43 session.vim
 badd +859 /usr/share/nvim/runtime/doc/motion.txt
+badd +1 .git/MERGE_MSG
 argglobal
 %argdel
-edit init.vim
+edit .gitignore
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -38,66 +39,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-1,14fold
-16,22fold
-23,29fold
-30,35fold
-15,36fold
-37,40fold
-43,48fold
-51,54fold
-59,63fold
-41,64fold
-69,79fold
-83,88fold
-89,91fold
-93,99fold
-100,101fold
-102,106fold
-107,109fold
-110,115fold
-82,116fold
-82,116fold
-117,128fold
-130,137fold
-129,138fold
-140,140fold
-141,143fold
-139,144fold
-80,145fold
-146,164fold
-15
-normal! zo
-15
-normal! zc
-41
-normal! zo
-80
-normal! zo
-82
-normal! zo
-82
-normal! zo
-82
-normal! zc
-82
-normal! zc
-129
-normal! zo
-129
-normal! zc
-139
-normal! zo
-139
-normal! zc
-80
-normal! zc
-let s:l = 43 - ((42 * winheight(0) + 17) / 35)
+let s:l = 2 - ((1 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-43
-normal! 01|
+2
+normal! 02|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

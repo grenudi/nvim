@@ -27,12 +27,6 @@ call plug#end()
       execute "source " . g:defaultSession
     endif
   endfunction
-  function! ResCur()
-    if line("'\"") <= line("$")
-      normal! g`"
-      return 1
-    endif
-  endfunction
 "/Util Functions
 "THEMES
   colorscheme gruvbox
@@ -48,10 +42,6 @@ call plug#end()
   " n... :  where to save the viminfo files
   set viminfo='50,\"200,:20,%,nc:~/.config/nvim/viminfo
   call g:LoadSession()
-"  augroup resCur
-"    autocmd!
-"    autocmd BufWinEnter * call ResCur()
-"  augroup END
   augroup resCur
     autocmd!
     autocmd BufReadPost * call setpos(".", getpos("'\""))

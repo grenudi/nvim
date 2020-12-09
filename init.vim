@@ -13,13 +13,6 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 "/PLUGINS
 "UTIL FUNCTIONS
-"/Util Functions
-"THEMES
-  colorscheme gruvbox
-  set cursorline
-"/Themes
-"ENVIRONMENTAL
-  let g:defaultSession="$HOME/.config/nvim/sessions/default.vim"
   function! g:SaveSession()
     if filereadable("session.vim")
       execute ":mksession!" . "session.vim"
@@ -40,9 +33,28 @@ call plug#end()
       return 1
     endif
   endfunction
+"/Util Functions
+"THEMES
+  colorscheme gruvbox
+  set cursorline
+"/Themes
+"ENVIRONMENTAL
+  let g:defaultSession="$HOME/.config/nvim/sessions/default.vim"
+  " Tell vim to remember certain things when we exit
+  " '10  :  marks will be remembered for up to 10 previously edited files
+  " "100 :  will save up to 100 lines for each register
+  " :20  :  up to 20 lines of command-line history will be remembered
+  " %    :  saves and restores the buffer list
+  " n... :  where to save the viminfo files
+  set viminfo='50,\"200,:20,%,nc:~/.config/nvim/viminfo
+  call g:LoadSession()
+"  augroup resCur
+"    autocmd!
+"    autocmd BufWinEnter * call ResCur()
+"  augroup END
   augroup resCur
     autocmd!
-    autocmd BufWinEnter * call ResCur()
+    autocmd BufReadPost * call setpos(".", getpos("'\""))
   augroup END
   augroup remember_folds
     autocmd!
@@ -51,12 +63,12 @@ call plug#end()
   augroup END
 "/Environmental
 "TODO: detect args on nvim call and do not load session
-"TODO: disable buffers setup undo folder 
+"TODO: disable buffers, setup undo folder 
 "TODO: plugin undo tree
 "TODO: how to work with clipboard, sync with system clipboard
-call g:LoadSession()
 "SET
   set nu
+  set rnu
   set nowrap
   set smartindent
 
@@ -77,6 +89,7 @@ call g:LoadSession()
     "File
       nnoremap <leader>fs :w<CR>
       nnoremap <leader>fev :e $MYVIMRC<CR>
+      nnoremap <leader>ft :NERDTreeToggle<CR>
     "Nav
       noremap <C-h> 0
       noremap <C-l> $
@@ -94,7 +107,6 @@ call g:LoadSession()
     "Toggle
       nnoremap <leader>tn :setl <c-r>=&nu ? "nonu" : "nu"<cr><cr>
       nnoremap <leader>tr :setl <c-r>=&rnu ? "nornu" : "rnu"<cr><cr>
-      nnoremap <leader>tf :NERDTreeToggle<CR>
     "Plugin manager
       nnoremap <leader>pi :PlugInstall<CR>
       nnoremap <leader>pu :PlugUpdate<CR>
@@ -117,7 +129,7 @@ call g:LoadSession()
   "CMAP
     "NAV
       call arpeggio#map('c', '', 0, 'jk', '<C-c>')
-      call arpeggio#map('c', '', 0, 'hl', '<CR>')
+      call arpeggio#map('c', '', 0, 'jl', '<CR>')
 
       cmap <C-j> <down>
       cmap <C-k> <up>
@@ -127,8 +139,8 @@ call g:LoadSession()
   "VMAP
     "Nav
     "Move (not the same as NAV)
-    vnoremap J :m '>+1<CR>gv=gv
-    vnoremap K :m '<-2<CR>gv=gv
+      vnoremap J :m '>+1<CR>gv=gv
+      vnoremap K :m '<-2<CR>gv=gv
   "/Vmap
 "/Map
 "JS IDE

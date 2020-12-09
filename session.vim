@@ -41,68 +41,42 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-1,21fold
-23,29fold
-30,36fold
-22,37fold
-38,42fold
-45,50fold
-53,56fold
-57,61fold
-43,62fold
-80,87fold
-67,92fold
-96,101fold
-102,105fold
-106,112fold
-113,114fold
-115,119fold
-120,122fold
-123,128fold
-129,130fold
+1,22fold
+24,30fold
+31,37fold
+23,38fold
+39,43fold
+46,51fold
+54,57fold
+58,62fold
+44,63fold
+81,88fold
+68,93fold
+97,102fold
+103,106fold
+107,113fold
+114,115fold
+116,120fold
+121,123fold
+125,130fold
 131,132fold
-95,133fold
-95,133fold
-134,145fold
-147,154fold
-146,155fold
-157,157fold
-158,160fold
-156,161fold
-93,162fold
-163,181fold
-1
-normal! zo
-22
-normal! zo
-22
-normal! zc
-43
-normal! zo
-43
-normal! zc
-67
-normal! zo
-93
-normal! zo
-95
-normal! zo
-95
-normal! zo
-146
-normal! zo
-146
-normal! zc
-156
-normal! zo
-156
-normal! zc
-let s:l = 65 - ((60 * winheight(0) + 17) / 34)
+133,134fold
+96,135fold
+96,135fold
+136,147fold
+149,156fold
+148,157fold
+159,159fold
+160,162fold
+158,163fold
+94,164fold
+165,183fold
+let s:l = 104 - ((103 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-65
-normal! 06|
+104
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

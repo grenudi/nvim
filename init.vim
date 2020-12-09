@@ -17,6 +17,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'https://github.com/vim-airline/vim-airline'
   Plug 'https://github.com/vim-airline/vim-airline-themes'
   Plug 'https://github.com/airblade/vim-gitgutter'
+  Plug 'https://github.com/mbbill/undotree'
 call plug#end()
 "/PLUGINS
 "UTIL FUNCTIONS
@@ -120,6 +121,7 @@ call plug#end()
     "Toggle
       nnoremap <leader>tn :setl <c-r>=&nu ? "nonu" : "nu"<cr><cr>
       nnoremap <leader>tr :setl <c-r>=&rnu ? "nornu" : "rnu"<cr><cr>
+      nnoremap <leader>tu :UndotreeToggle<CR>
     "Plugin manager
       nnoremap <leader>pi :PlugInstall<CR>
       nnoremap <leader>pu :PlugUpdate<CR>

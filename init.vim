@@ -16,21 +16,28 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'https://github.com/felixhummel/setcolors.vim'
   Plug 'https://github.com/vim-airline/vim-airline'
   Plug 'https://github.com/vim-airline/vim-airline-themes'
-  Plug 'https://github.com/airblade/vim-gitgutter'
+  "Plug 'https://github.com/airblade/vim-gitgutter'
+  Plug 'https://github.com/mhinz/vim-signify'
   Plug 'https://github.com/mbbill/undotree'
+  "ENCHANCE
+  Plug 'https://github.com/andymass/vim-matchup'
+  Plug 'https://github.com/frazrepo/vim-rainbow'
+  Plug 'https://github.com/jiangmiao/auto-pairs'
+  Plug 'https://github.com/mileszs/ack.vim'
+  Plug 'https://github.com/dense-analysis/ale'
 call plug#end()
 "/PLUGINS
 "UTIL FUNCTIONS
   function! g:SaveSession()
     if filereadable("session.vim")
-      execute ":mksession!" . "session.vim"
+      execute ":mksession! " . ".session.vim"
     else
-      execute ":mksession!" . g:defaultSession
+      execute ":mksession! " . g:defaultSession
     endif
   endfunction
   function! g:LoadSession()
     if filereadable("session.vim")
-      execute "source " . "session.vim"
+      execute "source " . ".session.vim"
     else
       execute "source " . g:defaultSession
     endif
@@ -43,6 +50,7 @@ call plug#end()
 "/Themes
 "ENVIRONMENTAL
   let g:defaultSession="$HOME/.config/nvim/sessions/default.vim"
+  let g:projectSession="session.vim"
   " Tell vim to remember certain things when we exit
   " '10  :  marks will be remembered for up to 10 previously edited files
   " "100 :  will save up to 100 lines for each register
@@ -55,6 +63,11 @@ call plug#end()
     autocmd!
     autocmd BufReadPost * call setpos(".", getpos("'\""))
   augroup END
+  augroup AutoSaveFolds
+    autocmd!
+    autocmd BufWinLeave * mkview ".view.vim"
+    autocmd BufWinEnter * silent loadview ".view.vim"
+  augroup END
   augroup remember_folds
     autocmd!
     autocmd BufWinLeave * mkview
@@ -63,18 +76,22 @@ call plug#end()
 "/Environmental
 "TODO: detect args on nvim call and do not load session
 "TODO: disable buffers, setup undo folder 
-"TODO: plugin undo tree
 "TODO: how to work with clipboard, sync with system clipboard
+"TODO: SAVE FOLDS !!
+"Remember this line
+"TESTING
 "SET
   "AirLine
   let g:airline#extensions#tabline#enabled = 1
   let g:airline_powerline_fonts = 1
   "let g:airline_theme='<theme>'
+  set updatetime=100
 
   syntax on
   filetype plugin on
   set omnifunc=syntaxcomplete#Complete
   set completeopt=longest,menuone
+  set clipboard+=unnamed
 
   set nu
   set rnu
@@ -97,17 +114,18 @@ call plug#end()
     "Session
       nnoremap <leader>qr :call g:SaveSession()<CR> :source $MYVIMRC<CR>
       nnoremap <leader>qq :NERDTreeClose<CR> :call g:SaveSession()<CR> :wqa!<CR>
-      nnoremap <leader>qss :mksession! session.vim<CR>
+      nnoremap <leader>qss :call g:SaveSession()<CR>
       nnoremap <leader>qsr :call delete("session.vim")<CR>
       nnoremap <leader>qQ :qa!<CR>
     "File
       nnoremap <leader>fs :w<CR>
       nnoremap <leader>fev :e $MYVIMRC<CR>
       nnoremap <leader>ft :NERDTreeToggle<CR>
+      nnoremap <leader>ff :Ack 
     "Nav
       noremap <C-h> 0
       noremap <C-l> $
-      noremap ff %
+      nmap ff %
       noremap <leader> :
       call arpeggio#map('n', '', 0, 'jk', '<Esc>')
       call arpeggio#map('n', '', 0, 'hl', '<Enter>')

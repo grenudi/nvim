@@ -7,7 +7,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +129 init.vim
+badd +202 init.vim
 badd +4 ~/Projects/megamacros/README.md
 badd +21 ~/Projects/megamacros/LICENSE
 badd +465 /usr/share/nvim/runtime/doc/fold.txt
@@ -43,26 +43,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-18,21fold
-31,37fold
-38,44fold
-46,46fold
-48,48fold
-48,49fold
-48,49fold
-48,49fold
-48,50fold
-48,50fold
-48,54fold
-55,56fold
-55,58fold
-71,81fold
-let s:l = 31 - ((20 * winheight(0) + 17) / 34)
+let s:l = 118 - ((28 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-31
-normal! 01|
+118
+normal! 08|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

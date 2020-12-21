@@ -111,6 +111,11 @@ call plug#end()
 "MAP
   let mapleader = " "
   "Nmap
+    "Colemak
+      noremap <alt+h> h
+      noremap <alt+i> l
+      noremap <alt+e> k
+      noremap <alt+n> j
     "Session
       nnoremap <leader>qr :call g:SaveSession()<CR> :source $MYVIMRC<CR>
       nnoremap <leader>qq :NERDTreeClose<CR> :call g:SaveSession()<CR> :wqa!<CR>

@@ -1,7 +1,6 @@
 "PLUGINS
 call plug#begin('~/.config/nvim/plugged')
   Plug 'https://github.com/tpope/vim-sensible'
-  Plug 'https://github.com/junegunn/seoul256.vim'
   Plug 'https://github.com/tpope/vim-surround'
   Plug 'https://github.com/kana/vim-arpeggio'
   Plug 'https://github.com/scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeClose']}
@@ -12,6 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'https://github.com/lifepillar/vim-solarized8'
   Plug 'https://github.com/lifepillar/vim-wwdc16-theme'
   Plug 'https://github.com/lifepillar/vim-wwdc17-theme'
+  Plug 'https://github.com/junegunn/seoul256.vim'
   "change theme on f8 F8 and alt f8
   Plug 'https://github.com/felixhummel/setcolors.vim'
   Plug 'https://github.com/vim-airline/vim-airline'
@@ -59,20 +59,6 @@ call plug#end()
   " n... :  where to save the viminfo files
   set viminfo='50,\"200,:20,%,nc:~/.config/nvim/viminfo
   call g:LoadSession()
-  augroup resCur
-    autocmd!
-    autocmd BufReadPost * call setpos(".", getpos("'\""))
-  augroup END
-  augroup AutoSaveFolds
-    autocmd!
-    autocmd BufWinLeave * mkview ".view.vim"
-    autocmd BufWinEnter * silent loadview ".view.vim"
-  augroup END
-  augroup remember_folds
-    autocmd!
-    autocmd BufWinLeave * mkview
-    autocmd BufWinEnter * silent! loadview
-  augroup END
 "/Environmental
 "TODO: detect args on nvim call and do not load session
 "TODO: disable buffers, setup undo folder 
@@ -83,7 +69,8 @@ call plug#end()
 "SET
   "AirLine
   let g:airline#extensions#tabline#enabled = 1
-  let g:airline_powerline_fonts = 1
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  "let g:airline_powerline_fonts = 1
   "let g:airline_theme='<theme>'
   set updatetime=100
 

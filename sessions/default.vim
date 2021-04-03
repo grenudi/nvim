@@ -7,7 +7,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +202 init.vim
+badd +17 ~/builds/dwm/config.h
+badd +13 ~/builds/dwm/config.mk
+badd +1 /etc/openvpn/client/uberman.ovpn
+badd +73 init.vim
 badd +4 ~/Projects/megamacros/README.md
 badd +21 ~/Projects/megamacros/LICENSE
 badd +465 /usr/share/nvim/runtime/doc/fold.txt
@@ -22,8 +25,15 @@ badd +766 /usr/share/nvim/runtime/doc/change.txt
 badd +235 /usr/share/nvim/runtime/doc/tabpage.txt
 badd +1 \[Plugins]
 badd +1 \[Plugins]\ (2)
+badd +18 ~/Projects/GCME/readme.md
+badd +30 ~/.config/espanso/default.yml
+badd +30 ~/.bashrc
+badd +17 ~/tmp.txt
+badd +5 ~/.config/systemd/user/espanso.service
+badd +1 /tmp/bash-fc.fkF5vj
+badd +1 NERD_tree_1
 argglobal
-%argdel
+silent! argdel *
 edit init.vim
 set splitbelow splitright
 set nosplitbelow
@@ -43,12 +53,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 118 - ((28 * winheight(0) + 23) / 47)
+let s:l = 71 - ((7 * winheight(0) + 7) / 15)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-118
-normal! 08|
+71
+normal! 05|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

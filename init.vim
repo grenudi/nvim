@@ -12,6 +12,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'https://github.com/lifepillar/vim-wwdc16-theme'
   Plug 'https://github.com/lifepillar/vim-wwdc17-theme'
   Plug 'https://github.com/junegunn/seoul256.vim'
+  Plug 'https://github.com/aloussase/cyberpunk'
   "change theme on f8 F8 and alt f8
   Plug 'https://github.com/felixhummel/setcolors.vim'
   Plug 'https://github.com/vim-airline/vim-airline'
@@ -45,7 +46,7 @@ call plug#end()
 "/Util Functions
 "THEMES
   silent! execute ":SetColors slate murphy gruvbox8 gruvbox8_hard gruvbox8_soft seoul256 solarized8_flat solarized8_low industry pablo"
-  colorscheme gruvbox8_hard
+  colorscheme cyberpunk
   set cursorline
 "/Themes
 "ENVIRONMENTAL
@@ -71,7 +72,7 @@ call plug#end()
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#left_alt_sep = '|'
   "let g:airline_powerline_fonts = 1
-  "let g:airline_theme='<theme>'
+  let g:airline_theme='hybrid'
   set updatetime=100
 
   syntax on

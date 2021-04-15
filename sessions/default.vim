@@ -32,17 +32,13 @@ badd +6 ~/.config/espanso/default.yml
 badd +17 ~/tmp.txt
 badd +5 ~/.config/systemd/user/espanso.service
 badd +1 /tmp/bash-fc.fkF5vj
-badd +39 src/content/throwByKey.js
-badd +1 /usr/share/nvim/runtime/doc/windows.txt
+badd +41 src/content/throwByKey.js
+badd +93 /usr/share/nvim/runtime/doc/windows.txt
 badd +1 ~/Projects/perltest/testing.pl
 argglobal
 silent! argdel *
-edit /usr/share/nvim/runtime/doc/windows.txt
+edit ~/.bashrc
 set splitbelow splitright
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
@@ -50,8 +46,6 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe '1resize ' . ((&lines * 20 + 24) / 48)
-exe '2resize ' . ((&lines * 24 + 24) / 48)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -62,37 +56,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 93 - ((18 * winheight(0) + 10) / 20)
+let s:l = 19 - ((18 * winheight(0) + 17) / 35)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-93
-normal! 0
-wincmd w
-argglobal
-if bufexists('src/content/throwByKey.js') | buffer src/content/throwByKey.js | else | edit src/content/throwByKey.js | endif
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-34,45fold
-34
-normal! zo
-let s:l = 41 - ((7 * winheight(0) + 12) / 24)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-41
-normal! 06|
-wincmd w
-2wincmd w
-exe '1resize ' . ((&lines * 20 + 24) / 48)
-exe '2resize ' . ((&lines * 24 + 24) / 48)
+19
+normal! 02|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

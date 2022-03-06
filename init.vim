@@ -12,7 +12,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'https://github.com/lifepillar/vim-wwdc16-theme'
   Plug 'https://github.com/lifepillar/vim-wwdc17-theme'
   Plug 'https://github.com/junegunn/seoul256.vim'
-  Plug 'https://github.com/aloussase/cyberpunk'
   "change theme on f8 F8 and alt f8
   Plug 'https://github.com/felixhummel/setcolors.vim'
   Plug 'https://github.com/vim-airline/vim-airline'
@@ -46,7 +45,7 @@ call plug#end()
 "/Util Functions
 "THEMES
   silent! execute ":SetColors slate murphy gruvbox8 gruvbox8_hard gruvbox8_soft seoul256 solarized8_flat solarized8_low industry pablo"
-  colorscheme cyberpunk
+  colorscheme pablo
   set cursorline
 "/Themes
 "ENVIRONMENTAL
@@ -124,6 +123,10 @@ call plug#end()
       call arpeggio#map('n', '', 0, 'hl', '<Enter>')
     "Window
       noremap <leader>wc :close<CR>
+      noremap <leader>wh <C-w>h
+      noremap <leader>wl <C-w>l
+      noremap <leader>wj <C-w>j
+      noremap <leader>wk <C-w>k
     "Tabs
       map <C-t><up> :tabr<cr>
       map <C-t><down> :tabl<cr>
